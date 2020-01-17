@@ -138,7 +138,7 @@ class GZXSearchResultListWidget extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Icon(
-                      Icons.chevron_left,
+                      Icons.chevron_right,
                       size: 18,
                       color: Colors.grey,
                     ),

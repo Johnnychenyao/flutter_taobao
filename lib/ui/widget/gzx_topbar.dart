@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_taobao/common/style/variables.dart';
+import 'package:flutter_taobao/common/utils/navigator_utils.dart';
 import 'package:flutter_taobao/common/utils/screen_util.dart';
 import 'package:flutter_taobao/ui/widget/gzx_search_card.dart';
 
@@ -73,7 +74,7 @@ class GZXTopBar extends StatelessWidget {
         elevation: 5.0,
         onTap: (){
           FocusScope.of(context).requestFocus(FocusNode());
-          print('ontap');
+          NavigatorUtils.gotoSearchGoodsPage(context);
         },
         textEditingController: _keywordTextEdittingController,
         focusNode: _focus,

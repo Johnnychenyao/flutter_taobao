@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_taobao/common/services/search.dart';
 import 'package:flutter_taobao/common/style/variables.dart';
 import 'package:flutter_taobao/common/utils/navigator_utils.dart';
 import 'package:flutter_taobao/common/utils/screen_util.dart';
+import 'package:flutter_taobao/ui/page/home/search_suggest_page.dart';
 import 'package:flutter_taobao/ui/widget/gzx_search_card.dart';
 import 'package:flutter_taobao/ui/widget/recomend_search.dart';
 
@@ -58,6 +60,7 @@ class _SearchGoodsPageState extends State<SearchGoodsPage> {
                       NavigatorUtils.gotoSearchGoodsResultPage(context, value);
                     },
                     onChanged: (value){
+                      print('value:$value');
                       searchTxtChanged(value);
                     },
                   ),
@@ -88,10 +91,45 @@ class _SearchGoodsPageState extends State<SearchGoodsPage> {
   }
 
   Widget _buildContentWidget() {
-    return Container();
+    return Column(
+      children: <Widget>[
+        SizedBox(height: 8),
+        TabBar(
+          indicatorColor: Color(0xFFfe5100),
+          indicatorSize: TabBarIndicatorSize.label,
+          isScrollable: true,
+          labelColor: Color(0xFFfe5100),
+          unselectedLabelColor: Colors.black,
+          labelPadding: EdgeInsets.only(left: 40, right: 40),
+          labelStyle: TextStyle(fontSize: ScreenUtil().setSp(12)),
+          onTap: (i){
+
+          },
+          tabs: _tabsTitle.map((i) => Text(
+            i,
+            style: TextStyle(fontSize: ScreenUtil().setSp(15)),
+          )).toList(),
+        ),
+        SizedBox(height: 8),
+        Expanded(
+          child: TabBarView(
+            children: <Widget>[
+              SearchSuggestPage(),
+              Text('SearchSuggestPage'),
+              Text('SearchSuggestPage'),
+            ],
+          ),
+        )
+      ],
+    );
   }
 
   void searchTxtChanged(String q) async {
-    // var result = await getSugg
+    var result = await getSuggest(q) as List;
+    recomendWords = result.map((dynamic i) {
+      List item = i as List;
+      return item[0] as String;
+    }).toList();
+    setState(() {});
   }
 }

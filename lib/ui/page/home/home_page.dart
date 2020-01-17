@@ -10,6 +10,7 @@ import 'package:flutter_taobao/common/model/tab.dart';
 import 'package:flutter_taobao/common/services/search.dart';
 import 'package:flutter_taobao/common/style/variables.dart';
 import 'package:flutter_taobao/common/utils/log_util.dart';
+import 'package:flutter_taobao/common/utils/navigator_utils.dart';
 import 'package:flutter_taobao/common/utils/screen_util.dart';
 import 'package:flutter_taobao/ui/page/home/searchlist_page.dart';
 import 'package:flutter_taobao/ui/tools/arc_clipper.dart';
@@ -216,7 +217,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin, Auto
               padding: EdgeInsets.symmetric(horizontal: 0),
               child: Row(
                 children: searchHintTexts.map((String item) => GestureDetector(
-                  onTap: (){},
+                  onTap: (){
+                    NavigatorUtils.gotoSearchGoodsResultPage(context, item);
+                  },
                   child: Container(
                     margin: EdgeInsets.all(4),
                     height: 20,

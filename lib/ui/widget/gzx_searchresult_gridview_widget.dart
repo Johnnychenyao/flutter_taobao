@@ -21,6 +21,7 @@ class GZXSearchResultGridViewWidget extends StatelessWidget {
         )
       : Padding(
           padding: EdgeInsets.only(left: 8, right: 8),
+          child: productGrid(list.data),
         );
   }
 
