@@ -48,7 +48,7 @@ class _SearchResultListPageState extends State<SearchResultListPage> with Automa
   double _dropDownHeight = 0;
   Animation<double> _animation;
   AnimationController _animationController;
-  List _filterConditions = ['综合','信用','价格降序','价格升序'];
+  // List _filterConditions = ['综合','信用','价格降序','价格升序'];
   List<GoodsSortCondition> _goodsSortConditions = [];
   GoodsSortCondition _selectGoodsSortCondition;
 
@@ -159,7 +159,7 @@ class _SearchResultListPageState extends State<SearchResultListPage> with Automa
                   ? _buildFilterWidget()
                   : SizedBox(),
                 Offstage(
-                  child: hideWidget,
+                  child: hideWidget,  
                   offstage: true,
                 ),
                 Expanded(

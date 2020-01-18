@@ -66,9 +66,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin, Auto
   void _getSizes(log, GlobalKey globalKey) {
     RenderBox renderBoxRed = globalKey.currentContext.findRenderObject();
     _sizeRed = renderBoxRed.size;
-    setState(() {
-      
-    });
+    setState(() {});
     print('SIZE of $log: $_sizeRed');
   }
 
@@ -139,6 +137,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin, Auto
             floating: true,
             forceElevated: boxIsScrolled,
             backgroundColor: GZXColors.mainBackgroundColor,
+            // backgroundColor: Colors.white,
             flexibleSpace: FlexibleSpaceBar(
               collapseMode: CollapseMode.pin,
               background: SingleChildScrollView( /* BUG: 修复溢出问题 */
@@ -150,7 +149,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin, Auto
             ),
             expandedHeight: (_sizeRed == null ? ScreenUtil.screenHeight : _sizeRed.height) + 50.0,
             bottom: PreferredSize(
-              preferredSize: Size(double.infinity, 46),
+              preferredSize: Size(double.infinity, 46), // 46，限制了浮窗高度
               child: GZXTabBarWidget(
                 tabControllerl: _controller,
                 tabModelsl: _tabModels,
@@ -160,14 +159,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin, Auto
           )
         ];
       },
-      body: _hotWords.length == 0
-        ? Center(
-            child: CircularProgressIndicator(),
-          )
-        : TabBarView(
-            controller: _controller,
-            children: _searchResultListPages(),
-          ),
+      // body: _hotWords.length == 0
+      //   ? Center(
+      //       child: CircularProgressIndicator(),
+      //     )
+      //   : TabBarView(
+      //       controller: _controller,
+      //       children: _searchResultListPages(),
+      //     ),
+      body: TabBarView(
+        controller: _controller,
+        children: _searchResultListPages(),
+      ),
     );
 
     /**主体 */
@@ -250,7 +253,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin, Auto
     List<Widget> pages = [];
     for (var i = 0; i < 8; i++) {
       var page=  SearchResultListPage(
-        _hotWords[i],
+        // _hotWords[i],
+        'T恤',
         onNotification: _onScroll,
         isList: false,
         isRecommended: true,

@@ -24,9 +24,8 @@ class _SearchGoodsPageState extends State<SearchGoodsPage> {
   @override
   void initState() { 
     super.initState();
-    
+    print('widget.keywords:${widget.keywords}');
     _keywordsTextEditingController.text = widget.keywords;
-
   }
 
   @override
@@ -57,6 +56,8 @@ class _SearchGoodsPageState extends State<SearchGoodsPage> {
                     textEditingController: _keywordsTextEditingController,
                     isShowLeading: false,
                     onSubmitted: (value){
+                      print(_keywordsTextEditingController);
+                      // print('onSubmitted:${_keywordsTextEditingController.addListener()}');
                       NavigatorUtils.gotoSearchGoodsResultPage(context, value);
                     },
                     onChanged: (value){
@@ -115,8 +116,8 @@ class _SearchGoodsPageState extends State<SearchGoodsPage> {
           child: TabBarView(
             children: <Widget>[
               SearchSuggestPage(),
-              Text('SearchSuggestPage'),
-              Text('SearchSuggestPage'),
+              SearchSuggestPage(),
+              SearchSuggestPage(),
             ],
           ),
         )

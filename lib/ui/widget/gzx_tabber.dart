@@ -22,7 +22,9 @@ class _GZXTabBarWidgetState extends State<GZXTabBarWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      width: MediaQuery.of(context).size.width,
+      // padding: EdgeInsets.only(bottom: 5),
+      // color: Colors.white,
       child: TabBar(
         controller: widget.tabControllerl,
         indicatorColor: Colors.transparent,
@@ -30,7 +32,7 @@ class _GZXTabBarWidgetState extends State<GZXTabBarWidget> {
         isScrollable: true,
         labelColor: Color(0xFFfe5100),
         unselectedLabelColor: Colors.black,
-        labelPadding: EdgeInsets.only(right: 5.0, left: 5.0),
+        labelPadding: EdgeInsets.only(right: 5.0, left: 5.0), 
         onTap: (index){
           setState(() {
             _selectedIndex = index;
